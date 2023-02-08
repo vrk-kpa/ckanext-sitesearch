@@ -22,6 +22,15 @@ def organization_search(context, data_dict):
 
     toolkit.check_access("organization_search", context, data_dict)
 
+    # api-catalog: Convert title sort to title_string sort
+    sort = data_dict.get('sort') or 'title asc'
+    if sort and 'title' in sort:
+        sort_items = [item.replace('title ', 'title_string ', 1)
+                      if item.startswith('title ')
+                      else item
+                      for item in sort.split(',')]
+        data_dict['sort'] = ','.join(sort_items)
+
     for item in p.PluginImplementations(ISiteSearch):
         data_dict = item.before_organization_search(data_dict)
 
