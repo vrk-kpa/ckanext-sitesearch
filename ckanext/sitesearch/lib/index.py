@@ -180,6 +180,11 @@ def _index_group_or_org(data_dict, defer_commit):
     # Store full dict
     data_dict["validated_data_dict"] = json.dumps(data_dict, cls=MissingNullEncoder)
 
+    # Serialize object fields
+    for k, v in data_dict.items():
+        if isinstance(v, dict):
+            data_dict[k] = json.dumps(v, cls=MissingNullEncoder)
+
     # Store description in the notes field so it gets added to the default field
     data_dict["notes"] = data_dict["description"]
 
