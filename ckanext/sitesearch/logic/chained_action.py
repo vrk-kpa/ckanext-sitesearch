@@ -102,7 +102,7 @@ def organization_update(up_func, context, data_dict):
 
     data_dict = up_func(context, data_dict)
 
-    index.index_organization(data_dict)
+    rebuild.rebuild_orgs(entity_id=data_dict['id'])
 
     return data_dict
 
@@ -133,7 +133,7 @@ def group_update(up_func, context, data_dict):
 
     data_dict = up_func(context, data_dict)
 
-    index.index_group(data_dict)
+    rebuild.rebuild_groups(entity_id=data_dict['id'])
 
     return data_dict
 
@@ -163,7 +163,7 @@ def user_update(up_func, context, data_dict):
 
     data_dict = up_func(context, data_dict)
 
-    index.index_user(data_dict)
+    rebuild.rebuild_users(entity_id=data_dict['id'])
 
     return data_dict
 
