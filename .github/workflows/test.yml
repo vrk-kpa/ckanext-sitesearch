@@ -43,7 +43,7 @@ jobs:
         pip install -r dev-requirements.txt
         pip install -e .
         
-        pip install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages
+        pip install -e git+https://github.com/ckan/ckanext-pages.git@b0b2961608a1b2a98151768d9f5e7eebc6274f0a#egg=ckanext-pages
     - name: Setup extension
       # Extra initialization steps
       run: |
